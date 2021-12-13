@@ -36,3 +36,22 @@ Final pages should look like this
 | ---------------- | ------ |
 | Films route      | 5      |
 | Characters route | 5      |
+
+# Steps
+
+1. `npm i`
+1. Create a `.env.development.local` file in the root directory
+   1. REACT_APP_API_KEY={access token from the-one-api.dev}
+   1. REACT_APP_SUPABASE_KEY={supabase key}
+1. In `App.js`...
+   1. In `getFilms` async function: 1. Start by pasting the following line:
+      ```js
+      const resp = await fetch(`${process.env.REACT_APP_SUPABASE_URL}/rest/v1/films)`, {
+        headers: {
+          apikey: process.env.REACT_APP_SUPABASE_KEY,
+          Authorization: `Bearer ${process.env.REACT_APP_SUPABASE_KEY}`,
+        },
+      });
+      ```
+      - URL for characters: `${process.env.REACT_APP_SUPABASE_URL}/rest/v1/characters`
+1. Q: How do we replace the spaces in film titles with '-'?
